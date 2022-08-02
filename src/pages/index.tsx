@@ -19,14 +19,14 @@ type Props = {
 
 const Home: NextPage<Props> = ({ time }) => {
   const base_time = new Date(time)
-  const result_time = base_time.getMonth() + '月' + base_time.getDate() + '日 ' + base_time.getHours() + ':' + base_time.getMinutes() + ':' + base_time.getSeconds()
+  const result_time = base_time.getMonth() + '/' + base_time.getDate() + ' ' + base_time.getHours() + ':' + base_time.getMinutes() + ':' + base_time.getSeconds()
 
   return (
     <div className={styles.container}>
       <Head>
         <title>{ result_time }</title>
         <meta property="og:url" content="/" />
-        <meta property="og:image" content="ページのアイキャッチ画像のURL" />
+        <meta property="og:image" content={ `https://og-image-rust-eta.vercel.app/${ result_time }.png` } />
         <meta property="og:title" content="ページのタイトル" />
         <meta property="og:description" content={ result_time } />
 
@@ -37,7 +37,8 @@ const Home: NextPage<Props> = ({ time }) => {
           <meta property='og:image:height' content='630' />
       </Head>
 
-      <h3>{ result_time }</h3>
+      <h3 className={ styles.title }>{ result_time }</h3>
+      <img className={ styles.image } src={ `https://og-image-rust-eta.vercel.app/${ result_time }.png` } alt='現在自国' />
     </div>
   )
 }

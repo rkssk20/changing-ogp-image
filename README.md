@@ -1,6 +1,6 @@
 ### Changing OGP Image
 
-[https://changing-ogp-image.vercel.app/]("https://changing-ogp-image.vercel.app/")
+[https://changing-ogp-image.vercel.app]("https://changing-ogp-image.vercel.app/")
 
 (ページごとの動的OGPではなく)同一ページのOGPを、条件によって動的に変更できるかのテストです。
 

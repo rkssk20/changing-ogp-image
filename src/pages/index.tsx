@@ -26,7 +26,7 @@ const Home: NextPage<Props> = ({ time }) => {
       <Head>
         <title>{ result_time }</title>
         <meta property="og:url" content="/" />
-        <meta property="og:image" content={ `https://og-image-rust-eta.vercel.app/${ result_time }.png` } />
+        <meta property="og:image" content={ `https://og-image-rust-eta.vercel.app/${ result_time }.png?test=aaa` } />
         <meta property="og:title" content="ページのタイトル" />
         <meta property="og:description" content={ result_time } />
 
@@ -38,7 +38,7 @@ const Home: NextPage<Props> = ({ time }) => {
       </Head>
 
       <h3 className={ styles.title }>{ result_time }</h3>
-      <img className={ styles.image } src={ `https://og-image-rust-eta.vercel.app/${ result_time }.png` } alt='現在自国' />
+      <img className={ styles.image } src={ `https://og-image-rust-eta.vercel.app/${ result_time }.png?test=aaa` } alt='現在自国' />
     </div>
   )
 }

@@ -11,7 +11,7 @@ export const getStaticProps = async() => {
   const base_time = new Date(time)
   const result_time = (base_time.getMonth() + 1) + '/' + base_time.getDate() + ' ' + base_time.getHours() + ':' + base_time.getMinutes() + ':' + base_time.getSeconds()
 
-  if(typeof process.env.NEXT_PUBLIC_KEY !== 'string') return
+  if(typeof process.env.NEXT_PUBLIC_KEY !== 'string') return { notFound: true }
 
   const cipher = crypto.createCipheriv("aes-256-cbc", process.env.NEXT_PUBLIC_KEY, crypto.randomBytes(16))
   const crypted = cipher.update(result_time, 'utf-8', 'hex')

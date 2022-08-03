@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import type { NextPage } from 'next'
+import Image from 'next/image'
 import crypto from 'crypto'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -10,7 +11,9 @@ export const getStaticProps = async() => {
   const base_time = new Date(time)
   const result_time = (base_time.getMonth() + 1) + '/' + base_time.getDate() + ' ' + base_time.getHours() + ':' + base_time.getMinutes() + ':' + base_time.getSeconds()
 
-  const cipher = crypto.createCipheriv("aes-256-cbc", process.env.NEXT_PUBLIC_KEY as string, crypto.randomBytes(16))
+  if(typeof process.env.NEXT_PUBLIC_KEY !== 'string') return
+
+  const cipher = crypto.createCipheriv("aes-256-cbc", process.env.NEXT_PUBLIC_KEY, crypto.randomBytes(16))
   const crypted = cipher.update(result_time, 'utf-8', 'hex')
   const crypted_text = crypted + cipher.final('hex')
 
@@ -57,7 +60,15 @@ const Home: NextPage<Props> = ({ time, ct }) => {
       </Head>
 
       <h3 className={ styles.title }>{ time }</h3>
-      <img className={ styles.image } src={ `https://og-image-rust-eta.vercel.app/${ time }.png` } alt='現在自国' />
+
+      <div className={ styles.image_field }>
+        <Image
+          src={ `https://og-image-rust-eta.vercel.app/${ time }.png` }
+          alt='現在時刻'
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
     </div>
   )
 }

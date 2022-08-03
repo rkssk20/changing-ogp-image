@@ -1,8 +1,13 @@
-.image {
-  width: 100%;
-}
-
 .title {
   width: 100%;
   text-align: center;
+}
+
+.image_field {
+  width: calc(100% - 128px);
+  aspect-ratio: 600 / 343;
+  margin-right: 64px;
+  margin-left: 64px;
+  position: relative;
+  overflow: hidden;
 }

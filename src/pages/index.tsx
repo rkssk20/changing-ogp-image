@@ -34,6 +34,8 @@ type Props = {
 const Home: NextPage<Props> = ({ time, ct }) => {
   const router = useRouter()
 
+  const url = process.env.NEXT_PUBLIC_URL + router.asPath
+
   useEffect(() =>{
     router.push({
       pathname: router.pathname,
@@ -42,6 +44,10 @@ const Home: NextPage<Props> = ({ time, ct }) => {
       shallow: true
     });
   }, []);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(url);
+  }
 
   return (
     <div className={styles.container}>
@@ -56,10 +62,27 @@ const Home: NextPage<Props> = ({ time, ct }) => {
 
         <meta property="fb:app_id" content="" />
         <meta property='og:image:width' content='1200' />
-          <meta property='og:image:height' content='630' />
+        <meta property='og:image:height' content='630' />
       </Head>
 
-      <h3 className={ styles.title }>{ time }</h3>
+      <h2 className={ styles.title }>{ 'Cache time: ' + time }</h2>
+
+      <h4 className={ styles.title }>15秒おきのISRでキャッシュした時間を表示します。</h4>
+
+      <h5 className={ styles.sub_title }>このページを共有してOGPを確認する。</h5>
+
+      <div className={ styles.button_field }>
+        <button className={ styles.button } onClick={ handleCopy }>URLをコピー</button>
+
+        <a
+          href={ `https://twitter.com/share?url=${ url }` }
+          target='_blank'
+          rel='nofollow noopener noreferrer'
+        >
+          <button className={ styles.button }>Twitterでツイート</button>
+        </a>
+      </div>
+
 
       <div className={ styles.image_field }>
         <Image
@@ -67,6 +90,8 @@ const Home: NextPage<Props> = ({ time, ct }) => {
           alt='現在時刻'
           layout="fill"
           objectFit="cover"
+          placeholder='blur'
+          blurDataURL='/CutePet.png'
         />
       </div>
     </div>

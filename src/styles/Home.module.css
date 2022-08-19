@@ -1,6 +1,33 @@
 .title {
   width: 100%;
   text-align: center;
+  width: 100%;
+  text-align: center;
+}
+
+.sub_title {
+  width: 100%;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.button_field {
+  width: calc(100% / 3);
+  min-width: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #414fa3;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999px;
 }
 
 .image_field {
